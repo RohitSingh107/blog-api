@@ -20,6 +20,8 @@ class User(BaseModel):
 
 
 class ShowUser(BaseModel):
+
+    # id: int
     name: str
     email: str
     blogs: List[Blog] = []
@@ -30,6 +32,7 @@ class ShowUser(BaseModel):
 
 class ShowBlog(Blog):
 
+    # id: int
     title: str
     body: str
     creator: ShowUser
