@@ -1,8 +1,7 @@
 
-from fastapi import APIRouter, Depends, status, HTTPException
+from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from .. import schemas, database, models
-from ..hashing import Hash
+from .. import schemas, database
 from ..core import user
 
 router = APIRouter(
@@ -18,4 +17,4 @@ def create_user(request: schemas.User, db: Session = Depends(database.get_db)):
 
 @router.get('/{id}', response_model=schemas.ShowUser)
 def get_user(id: int, db: Session = Depends(database.get_db)):
-    return user.get_user(id, db)
+    return user.show_user(id, db)
