@@ -1,5 +1,4 @@
 from datetime import datetime, timedelta
-import email
 from jose import JWTError, jwt
 from . import schemas
 
@@ -23,8 +22,8 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
 def verify_token(token: str, credentials_exception):
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        username: str = payload.get("sub")
-        if username is None:
+        email: str = payload.get("sub")
+        if email is None:
             raise credentials_exception
         token_data = schemas.TokenData(email=email)
     except JWTError:
