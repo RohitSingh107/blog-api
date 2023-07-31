@@ -1,0 +1,4 @@
+- Start the db service: systemctl start postgresql.service
+- change to postgres user: sudo -iu postgres
+- create the db: createdb mydb.db
+- start the server: uvicorn blog.main:app --reload
